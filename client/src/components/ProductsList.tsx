@@ -1,26 +1,37 @@
 import { useState } from 'react';
-import ProductCard from './ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { ProductType, RootState } from '../types';
+
 import { Row, Col, Container, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+
 import { addProduct } from '../redux/ducks/products';
 import { addProductDB } from '../dataManager';
+
+import { ProductType, RootState } from '../types';
+
+import ProductCard from './ProductCard';
 import ProductModal from './ProductModal';
+
+
+
+
+
+
+const CLEAR_PRODUCT = {
+  _id: '',
+  imageURL: '',
+  name: '',
+  count: 0,
+  size: {
+    width: 0,
+    height: 0,
+  },
+  weight: 0,
+  comments: [],
+}
 
 const ProductsList = () => {
   const [show, setShow] = useState<boolean>(false);
-  const [product, setProduct] = useState<ProductType>({
-    _id: '',
-    imageURL: '',
-    name: '',
-    count: 0,
-    size: {
-      width: 0,
-      height: 0,
-    },
-    weight: 0,
-    comments: [],
-  });
+  const [product, setProduct] = useState<ProductType>(CLEAR_PRODUCT);
 
   const [sortCriteria, setSortCriteria] = useState<string>('name');
   const [sortOrder, setSortOrder] = useState<string>('asc');
@@ -33,18 +44,7 @@ const ProductsList = () => {
     addProductDB(product).then((res) => {
       dispatch(addProduct(res));
     });
-    setProduct({
-      _id: '',
-      imageURL: '',
-      name: '',
-      count: 0,
-      size: {
-        width: 0,
-        height: 0,
-      },
-      weight: 0,
-      comments: [],
-    });
+    setProduct(CLEAR_PRODUCT);
   };
 
   const handleSortChange = (eventKey: string | null) => {

@@ -17,8 +17,6 @@ mongoose.connect(DB)
     .then((res) => console.log('Connected to DB'))
     .catch((error) => console.log(error))
 
-
-// Configure CORS
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'DELETE'],
@@ -70,8 +68,6 @@ app.post('/products', (req, res) => {
         .catch((error) => res.status(400).send(error))
 })
 
-
-// Start server and load initial data
 server.listen(PORT, async () => {
     console.log("Running on " + PORT)
 });

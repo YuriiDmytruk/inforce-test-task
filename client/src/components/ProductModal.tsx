@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import { Button, Form, InputGroup, Modal, Alert } from 'react-bootstrap';
+
 import { ProductType } from '../types';
 
 type ProductModalProps = {

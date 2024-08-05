@@ -46,8 +46,6 @@ export type addProductsType = {
     products: ProductType[]
 }
 
-
-
 export type addCommentType = {
     type: string,
     comment: CommentType

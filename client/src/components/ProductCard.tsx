@@ -1,10 +1,13 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { ProductType } from '../types';
-import { deleteProductDB } from '../dataManager';
 import { useDispatch } from 'react-redux';
+
+import {Button, Card} from 'react-bootstrap';
+
 import { deleteProduct } from '../redux/ducks/products';
+import { deleteProductDB } from '../dataManager';
+
+import { ProductType } from '../types';
+
+
 
 type ProductCardProps = {
   product: ProductType;

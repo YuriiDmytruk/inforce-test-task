@@ -15,6 +15,7 @@ export const getAllProducts = async () => {
 };
 
 export const addProductDB = async (product: ProductType) => {
+    
     try {
         const response = await fetch('http://localhost:5000/products', {
             method: 'POST',
@@ -29,6 +30,7 @@ export const addProductDB = async (product: ProductType) => {
         }
 
         const data = await response.json();
+        console.log(data)
         return data;
     } catch (error) {
         console.error('Error adding product:', error);

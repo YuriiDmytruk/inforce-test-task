@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     getAllProducts().then((result) => dispatch(addProducts(result)))
-  }, [dispatch]);
+  }, []);
 
   return (
     <BrowserRouter>

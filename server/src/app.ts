@@ -6,8 +6,8 @@ import mongoose from 'mongoose';
 import { Product } from './models/product';
 import { Comment } from './models/comment';
 
-// Initialize express app and HTTP server
 const app = express();
+app.use(express.json());
 const server = createServer(app);
 
 const PORT = 5000
@@ -44,9 +44,6 @@ app.delete('/products/:id', async (req, res) => {
         if (!result) {
             return res.status(404).send('Product not found');
         }
-        console.log(id)
-        console.log('DELETED')
-        console.log(result)
         res.status(200).json({ message: 'Product deleted successfully', product: result });
     } catch (error) {
         console.error(error);
@@ -55,18 +52,18 @@ app.delete('/products/:id', async (req, res) => {
 });
 
 app.post('/products', (req, res) => {
+    const { imageURL, name, count, size, weight, comments } = req.body;
     const product = new Product({
-        imageURL: "asd",
-        name: "Name",
-        count: 4,
+        imageURL,
+        name,
+        count,
         size: {
-            width: 23,
-            height: 34
+            width: size.width,
+            height: size.height,
         },
-        weight: 500,
-        comments: []
-    })
-    console.log(product)
+        weight,
+        comments
+    });
     product
         .save()
         .then((respond) => res.status(200).send(respond))

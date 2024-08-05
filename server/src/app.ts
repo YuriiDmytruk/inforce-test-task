@@ -36,6 +36,24 @@ app.get('/products', async (_, res) => {
     }
 });
 
+app.delete('/products/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await Product.findByIdAndDelete(id);
+
+        if (!result) {
+            return res.status(404).send('Product not found');
+        }
+        console.log(id)
+        console.log('DELETED')
+        console.log(result)
+        res.status(200).json({ message: 'Product deleted successfully', product: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 app.post('/products', (req, res) => {
     const product = new Product({
         imageURL: "asd",
@@ -51,7 +69,7 @@ app.post('/products', (req, res) => {
     console.log(product)
     product
         .save()
-        .then(() => res.status(200).send())
+        .then((respond) => res.status(200).send(respond))
         .catch((error) => res.status(400).send(error))
 })
 

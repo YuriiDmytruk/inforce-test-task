@@ -1,8 +1,7 @@
-import { addComentsType, addCommentType, commentsStateType, CommentType, deleteCommentType, updateComentType } from "../../types";
+import { addComentsType, addCommentType, commentsStateType, CommentType, deleteCommentType } from "../../types";
 
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
-export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 export const ADD_COMMENTS = 'ADD_COMMENTS'
 
 const defaultState: commentsStateType = {
@@ -18,9 +17,7 @@ export const commentsReducer = (
             const newComment= { ...action.comment }
             return { comments: [...state.comments, newComment] }
         case DELETE_COMMENT:
-            return { comments: state.comments.filter((comment: CommentType) => comment.id !== action.id) }
-        case UPDATE_COMMENT:
-            return { comments: [...state.comments.filter((comment: CommentType) => comment.id !== action.id), action.comment] }
+            return { comments: state.comments.filter((comment: CommentType) => comment._id !== action.id) }
         case ADD_COMMENTS:
             return { comments: [...state.comments, ...action.comments] }
         default:
@@ -33,10 +30,6 @@ export const addCOMMENT = (comment: CommentType): addCommentType => {
 }
 export const deleteCOMMENT = (id: string): deleteCommentType => {
     return { type: DELETE_COMMENT, id: id }
-}
-
-export const updateCOMMENT = (id: string, comment: CommentType): updateComentType => {
-    return { type: UPDATE_COMMENT, id: id, comment: comment }
 }
 
 export const addCOMMENTs = (comments: CommentType[]): addComentsType => {

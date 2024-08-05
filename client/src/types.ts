@@ -1,5 +1,5 @@
 export type ProductType = {
-    id: string,
+    _id: string,
     imageURL: string,
     name: string,
     count: number,
@@ -12,7 +12,7 @@ export type ProductType = {
 }
 
 export type CommentType = {
-    id: string,
+    _id: string,
     productId: string,
     description: string,
     date: string
@@ -26,6 +26,11 @@ export type commentsStateType = {
     comments: CommentType[]
 }
 
+export type RootState = {
+    products: productsStateType,
+    comments: commentsStateType
+}
+
 export type addProductType = {
     type: string,
     product: ProductType
@@ -34,12 +39,6 @@ export type addProductType = {
 export type deleteProductType = {
     type: string,
     id: string
-}
-
-export type updateProductType = {
-    type: string,
-    id: string,
-    product: ProductType
 }
 
 export type addProductsType = {
@@ -57,12 +56,6 @@ export type addCommentType = {
 export type deleteCommentType = {
     type: string,
     id: string
-}
-
-export type updateComentType = {
-    type: string,
-    id: string,
-    comment: CommentType
 }
 
 export type addComentsType = {

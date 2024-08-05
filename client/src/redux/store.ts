@@ -1,4 +1,4 @@
-import { createStore, Store } from 'redux';
+import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 
 import { productsReducer } from './ducks/products';

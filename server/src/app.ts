@@ -26,9 +26,14 @@ app.use(cors({
     credentials: true
 }));
 
-app.get('/', async (req: any, res: any) => {
-    const symbol = req.query.symbol as string | undefined;
-    res.status(400)
+app.get('/products', async (_, res) => {
+    try {
+        const products = await Product.find({});
+        res.status(200).json(products);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 app.post('/products', (req, res) => {

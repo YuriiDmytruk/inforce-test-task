@@ -23,10 +23,10 @@ const ProductCard = (props: ProductCardProps) => {
       <Card.Body>
         <Card.Title>{props.product.name}</Card.Title>
         <Card.Text>
-          <p>Product count: {props.product.count}</p>
-          <p>Product width: {props.product.size.width}</p>
-          <p>Product height: {props.product.size.height}</p>
-          <p>Product weight: {props.product.weight}</p>
+          Product count: {props.product.count}<br/>
+          Product width: {props.product.size.width}<br/>
+          Product height: {props.product.size.height}<br/>
+          Product weight: {props.product.weight}<br/>
         </Card.Text>
         <Button variant="danger" onClick={deleteButtonClickHandler}>Delete</Button>
       </Card.Body>

@@ -1,4 +1,3 @@
-import { addProductDB } from "../../dataManager";
 import { addProductsType, addProductType, deleteProductType, productsStateType, ProductType } from "../../types";
 
 export const ADD_PRODUCT = 'ADD_PRODUCT'
